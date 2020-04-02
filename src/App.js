@@ -54,11 +54,10 @@ const useStyles = makeStyles(theme => ({
 
 /*
  * The component for score
-  //have answered how many
-  answered,
-  //totoal questions
-  totoal,
-  //correct answers
+ * the props:
+ * answered:have answered how many
+ * total:total questions
+ * correct: correct answers by now
  */
 function Score(props){
   const score = props.answered === 0? 
@@ -66,7 +65,10 @@ function Score(props){
   :
     Math.round(props.correct * 100 / props.answered);
   const minScore = Math.round(props.correct * 100 / props.total);
-  const maxScore = Math.round((props.correct + (props.total - props.answered)) * 100 / props.total);
+  const maxScore = 
+    Math.round(
+      (props.correct + (props.total - props.answered)) * 100 / props.total
+    );
 
   return (
     <div>
